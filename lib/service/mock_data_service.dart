@@ -20,7 +20,8 @@ class MockDataService {
         bio: 'Op. Dr. Cem İnan Bektaş Zurih Üniversitesi’nde mikrocerrahi eğitimi aldı, çok sayıda başarılı ameliyatlar yaptı. Türkiye’nin sayılı Plastik Cerrahi uzmanlarından Op. Dr. Cem İnan Bektaş hasta kabulüne başladı.',
         email: 'ceminanbektas@ornek.com',
         phone: "+905551234567",
-        workplace: "Cem İnan Bektaş Clinic"
+        workplace: "Cem İnan Bektaş Clinic",
+        imagePath: 'assets/images/dr-cem-inan-bektas.png'
       ),
       ProviderModel(
         id: '2',
@@ -37,7 +38,8 @@ class MockDataService {
         bio: 'Hôpital privé de la Seine Saint-Denis, établissement de Médecine - Chirurgie - Obstétrique (MCO), gro',
         email: 'test@ramsay.com',
         phone: null, // Null kontrolün testi için null bırakıldı.
-        workplace: null
+        workplace: null,
+        imagePath: 'assets/images/ramsay-sante.png'
       ),
       ProviderModel(
         id: '3',
@@ -54,7 +56,8 @@ class MockDataService {
         bio: 'Medhair Clinic, İstanbul’un sağlık turizmi alanında öne çıkan saç ekimi merkezlerinden biridir. Uluslararası standartlardaki hizmet anlayışı ve 10 yılı aşkın tecrübesiyle Medhair Clinic, güvenilir bir saç ekimi deneyimi sunar.',
         email: 'test@medhair.com',
         phone: '+49123456789',
-        workplace: null
+        workplace: null,
+        imagePath: 'assets/images/medhair-clinic.png'
       ),
       ProviderModel(
         id: '4',
@@ -71,7 +74,8 @@ class MockDataService {
         bio: null,
         email: null,
         phone: null,
-        workplace: "Osman Bilgin Timuralp Clinic"
+        workplace: "Osman Bilgin Timuralp Clinic",
+        imagePath: 'assets/images/prof-osman-bilgin-timuralp.png'
       ),
       ProviderModel(
         id: '5',
@@ -88,7 +92,8 @@ class MockDataService {
         bio: null,
         email: null,
         phone: null,
-        workplace: null
+        workplace: null,
+        imagePath: 'assets/images/acibadem-hastanesi.png'
       ),
       ProviderModel(
           id: '6',
@@ -105,7 +110,8 @@ class MockDataService {
           bio: 'Op. Dr. Cem İnan Bektaş Zurih Üniversitesi’nde mikrocerrahi eğitimi aldı, çok sayıda başarılı ameliyatlar yaptı. Türkiye’nin sayılı Plastik Cerrahi uzmanlarından Op. Dr. Cem İnan Bektaş hasta kabulüne başladı.',
           email: 'ceminanbektas@ornek.com',
           phone: "+905551234567",
-          workplace: null
+          workplace: null,
+          imagePath: 'assets/images/dr-cem-inan-bektas.png'
       ),
       ProviderModel(
           id: '7',
@@ -122,7 +128,8 @@ class MockDataService {
           bio: null,
           email: 'batikan@ornek.com',
           phone: "+905551234567",
-          workplace: "Cem İnan Bektaş Clinic"
+          workplace: "Cem İnan Bektaş Clinic",
+          imagePath: 'assets/images/dr-cem-inan-bektas.png'
       ),
     ];
   }

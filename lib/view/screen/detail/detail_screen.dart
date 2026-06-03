@@ -17,7 +17,7 @@ class ProviderDetailScreen extends StatelessWidget {
       backgroundColor: ApplicationColors.bgColor,
       body: CustomScrollView(
         slivers: [
-          DetailSliverAppBar(type: provider.type),
+          DetailSliverAppBar(provider: provider),
 
           SliverToBoxAdapter(
             child: Container(

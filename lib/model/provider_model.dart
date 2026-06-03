@@ -15,6 +15,7 @@ class ProviderModel {
   final bool isVerified;
 
   final String? workplace;
+  final String? imagePath;
   final String? bio;
   final String? email;
   final String? phone;
@@ -31,6 +32,7 @@ class ProviderModel {
     required this.postCount,
     required this.followCount,
     this.workplace,
+    this.imagePath,
     this.isVerified = false,
     this.bio,
     this.email,
@@ -49,6 +51,7 @@ class ProviderModel {
     int? postCount,
     int? followCount,
     String? workplace,
+    String? imagePath,
     bool? isVerified,
     String? bio,
     String? email,
@@ -66,6 +69,7 @@ class ProviderModel {
       postCount: postCount ?? this.postCount,
       followCount: followCount ?? this.followCount,
       workplace: workplace ?? this.workplace,
+      imagePath: imagePath ?? this.imagePath,
       isVerified: isVerified ?? this.isVerified,
       bio: bio ?? this.bio,
       email: email ?? this.email,
