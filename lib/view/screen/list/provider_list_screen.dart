@@ -53,13 +53,47 @@ class _ProviderListScreenState extends State<ProviderListScreen> {
 
                   if (viewModel.errorMessage != null) { // Hata durumu
                     return Center(
-                      child: Text(viewModel.errorMessage!),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.wifi_off, size: 64, color: ApplicationColors.secondaryText),
+                          const SizedBox(height: 16),
+                          Text(
+                            viewModel.errorMessage!,
+                            style: const TextStyle(fontSize: 16, color: ApplicationColors.secondaryText),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 24),
+                          ElevatedButton.icon(
+                            onPressed: () {
+                              context.read<ProviderViewModel>().fetchProviders();
+                            },
+                            icon: const Icon(Icons.refresh, color: Colors.white),
+                            label: const Text('Try Again', style: TextStyle(color: Colors.white)),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: ApplicationColors.accent,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   }
 
                   if (viewModel.displayedProviders.isEmpty) { // Boş liste durumu
                     return const Center(
-                      child: Text('No providers found matching your criteria.'),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.search_off, size: 64, color: ApplicationColors.secondaryText),
+                          SizedBox(height: 16),
+                          Text(
+                            'No providers found matching your criteria.',
+                            style: TextStyle(fontSize: 16, color: ApplicationColors.secondaryText),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
                     );
                   }
 
