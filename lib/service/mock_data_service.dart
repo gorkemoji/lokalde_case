@@ -90,6 +90,40 @@ class MockDataService {
         phone: null,
         workplace: null
       ),
+      ProviderModel(
+          id: '6',
+          name: 'Cem İnan Bektaş Clinic',
+          type: ProviderType.clinic,
+          category: 'Plastic Surgeon Clinic',
+          country: 'Türkiye',
+          city: 'İstanbul',
+          rating: 0.0,
+          reviewCount: 0,
+          postCount: 0,
+          followCount: 0,
+          isVerified: false,
+          bio: 'Op. Dr. Cem İnan Bektaş Zurih Üniversitesi’nde mikrocerrahi eğitimi aldı, çok sayıda başarılı ameliyatlar yaptı. Türkiye’nin sayılı Plastik Cerrahi uzmanlarından Op. Dr. Cem İnan Bektaş hasta kabulüne başladı.',
+          email: 'ceminanbektas@ornek.com',
+          phone: "+905551234567",
+          workplace: null
+      ),
+      ProviderModel(
+          id: '7',
+          name: 'Batıkan Hafızoğlu',
+          type: ProviderType.doctor,
+          category: 'Plastic Surgeon',
+          country: 'Türkiye',
+          city: 'İstanbul',
+          rating: 0.0,
+          reviewCount: 0,
+          postCount: 0,
+          followCount: 0,
+          isVerified: false,
+          bio: null,
+          email: 'batikan@ornek.com',
+          phone: "+905551234567",
+          workplace: "Cem İnan Bektaş Clinic"
+      ),
     ];
   }
 }

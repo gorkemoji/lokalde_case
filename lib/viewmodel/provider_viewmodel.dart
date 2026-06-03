@@ -11,9 +11,22 @@ class ProviderViewModel extends ChangeNotifier {
   List<ProviderModel> _allProviders = [];
   List<ProviderModel> displayedProviders = [];
 
+  String _currentSearchQuery = '';
   String? currentCountryFilter;
   String? currentCityFilter;
   String? currentSpecialtyFilter;
+
+  void searchProviders(String query) {
+    _currentSearchQuery = query.toLowerCase().trim();
+    _applyAllFilters();
+  }
+
+  void applyFilters({String? country, String? city, String? specialty}) {
+    currentCountryFilter = country;
+    currentCityFilter = city;
+    currentSpecialtyFilter = specialty;
+    _applyAllFilters();
+  }
 
   Future<void> fetchProviders() async {
     isLoading = true;
@@ -24,52 +37,38 @@ class ProviderViewModel extends ChangeNotifier {
       _allProviders = await _service.getProviders();
       displayedProviders = List.from(_allProviders);
     } catch (e) {
-      errorMessage = 'Veriler yüklenirken beklenmedik bir hata oluştu.';
+      errorMessage = 'Error occured while retrieving the data.';
     } finally {
       isLoading = false;
       notifyListeners();
     }
   }
 
-  void searchProviders(String query) {
-    if (query.isEmpty) {
-      displayedProviders = List.from(_allProviders);
-    } else {
-      displayedProviders = _allProviders.where((provider) {
-        return provider.name.toLowerCase().contains(query.toLowerCase());
-      }).toList();
-    }
-    notifyListeners();
-  }
+  void _applyAllFilters() {
+    displayedProviders = _allProviders.where((provider) {
 
-  void applyFilters({String? country, String? city, String? specialty}) {
-    currentCountryFilter = country;
-    currentCityFilter = city;
-    currentSpecialtyFilter = specialty;
+      // Arama kontrolü
+      final matchesSearch = _currentSearchQuery.isEmpty ||
+          provider.name.toLowerCase().contains(_currentSearchQuery) ||
+          provider.category.toLowerCase().contains(_currentSearchQuery) ||
+          (provider.workplace != null && provider.workplace!.toLowerCase().contains(_currentSearchQuery));
 
-    // Eğer hiçbir filtre seçilmemişse tüm liste geri gelecek
-    if ((country == null || country.isEmpty) &&
-        (city == null || city.isEmpty) &&
-        (specialty == null || specialty.isEmpty)) {
-      displayedProviders = List.from(_allProviders);
-    } else {
-      displayedProviders = _allProviders.where((provider) {
-        // Ülke eşleşmesi kontrolü
-        final matchesCountry = (country == null || country.isEmpty)
-            || provider.country.toLowerCase() == country.toLowerCase();
+      // Ülke eşleşmesi kontrolü
+      final matchesCountry = (currentCountryFilter == null || currentCountryFilter!.isEmpty)
+          || provider.country.toLowerCase() == currentCountryFilter!.toLowerCase();
 
-        // Şehir eşleşmesi kontrolü
-        final matchesCity = (city == null || city.isEmpty)
-            || provider.city.toLowerCase().contains(city.toLowerCase());
+      // Şehir eşleşmesi kontrolü
+      final matchesCity = (currentCityFilter == null || currentCityFilter!.isEmpty)
+          || provider.city.toLowerCase().contains(currentCityFilter!.toLowerCase());
 
-        // Branş eşleşmesi kontrolü
-        final matchesSpecialty = (specialty == null || specialty.isEmpty)
-            || provider.category.toLowerCase().contains(specialty.toLowerCase());
+      // Branş eşleşmesi kontrolü
+      final matchesSpecialty = (currentSpecialtyFilter == null || currentSpecialtyFilter!.isEmpty)
+          || provider.category.toLowerCase().contains(currentSpecialtyFilter!.toLowerCase());
 
-        // Her iki şartı da sağlayanlar listeye dahil edilir
-        return matchesCountry && matchesCity && matchesSpecialty;
-      }).toList();
-    }
+      // Tüm şartları sağlayanları listeye dahil eder
+      return matchesSearch && matchesCountry && matchesCity && matchesSpecialty;
+    }).toList();
+
     notifyListeners();
   }
 
