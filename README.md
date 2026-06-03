@@ -1,7 +1,7 @@
 # Lokalde (MediFinder) - Case Study
 
 ## DEMO VIDEO
-[Watch Demo Video](https://github.com/gorkemoji/lokalde_case/demo.MP4)
+[Watch Demo Video](https://github.com/gorkemoji/lokalde_case/blob/main/demo.MP4)
 
 This project is a mobile application developed as a case study to demonstrate a clean, maintainable, and production-ready approach to building a healthcare provider (doctor, clinic, hospital) search and filter flow. It is made for Lokalde.
 
