@@ -19,7 +19,8 @@ class MockDataService {
         isVerified: false,
         bio: 'Op. Dr. Cem İnan Bektaş Zurih Üniversitesi’nde mikrocerrahi eğitimi aldı, çok sayıda başarılı ameliyatlar yaptı. Türkiye’nin sayılı Plastik Cerrahi uzmanlarından Op. Dr. Cem İnan Bektaş hasta kabulüne başladı.',
         email: 'ceminanbektas@ornek.com',
-        phone: "+905551234567"
+        phone: "+905551234567",
+        workplace: "Cem İnan Bektaş Clinic"
       ),
       ProviderModel(
         id: '2',
@@ -36,6 +37,7 @@ class MockDataService {
         bio: 'Hôpital privé de la Seine Saint-Denis, établissement de Médecine - Chirurgie - Obstétrique (MCO), gro',
         email: 'test@ramsay.com',
         phone: null, // Null kontrolün testi için null bırakıldı.
+        workplace: null
       ),
       ProviderModel(
         id: '3',
@@ -51,7 +53,8 @@ class MockDataService {
         isVerified: true,
         bio: 'Medhair Clinic, İstanbul’un sağlık turizmi alanında öne çıkan saç ekimi merkezlerinden biridir. Uluslararası standartlardaki hizmet anlayışı ve 10 yılı aşkın tecrübesiyle Medhair Clinic, güvenilir bir saç ekimi deneyimi sunar.',
         email: 'test@medhair.com',
-        phone: '+49123456789'
+        phone: '+49123456789',
+        workplace: null
       ),
       ProviderModel(
         id: '4',
@@ -68,6 +71,7 @@ class MockDataService {
         bio: null,
         email: null,
         phone: null,
+        workplace: "Osman Bilgin Timuralp Clinic"
       ),
       ProviderModel(
         id: '5',
@@ -83,7 +87,8 @@ class MockDataService {
         isVerified: true,
         bio: null,
         email: null,
-        phone: null
+        phone: null,
+        workplace: null
       ),
     ];
   }

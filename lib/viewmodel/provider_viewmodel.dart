@@ -11,6 +11,10 @@ class ProviderViewModel extends ChangeNotifier {
   List<ProviderModel> _allProviders = [];
   List<ProviderModel> displayedProviders = [];
 
+  String? currentCountryFilter;
+  String? currentCityFilter;
+  String? currentSpecialtyFilter;
+
   Future<void> fetchProviders() async {
     isLoading = true;
     errorMessage = null;
@@ -38,9 +42,15 @@ class ProviderViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void applyFilters({String? country, String? specialty}) {
+  void applyFilters({String? country, String? city, String? specialty}) {
+    currentCountryFilter = country;
+    currentCityFilter = city;
+    currentSpecialtyFilter = specialty;
+
     // Eğer hiçbir filtre seçilmemişse tüm liste geri gelecek
-    if ((country == null || country.isEmpty) && (specialty == null || specialty.isEmpty)) {
+    if ((country == null || country.isEmpty) &&
+        (city == null || city.isEmpty) &&
+        (specialty == null || specialty.isEmpty)) {
       displayedProviders = List.from(_allProviders);
     } else {
       displayedProviders = _allProviders.where((provider) {
@@ -48,12 +58,16 @@ class ProviderViewModel extends ChangeNotifier {
         final matchesCountry = (country == null || country.isEmpty)
             || provider.country.toLowerCase() == country.toLowerCase();
 
+        // Şehir eşleşmesi kontrolü
+        final matchesCity = (city == null || city.isEmpty)
+            || provider.city.toLowerCase().contains(city.toLowerCase());
+
         // Branş eşleşmesi kontrolü
         final matchesSpecialty = (specialty == null || specialty.isEmpty)
             || provider.category.toLowerCase().contains(specialty.toLowerCase());
 
         // Her iki şartı da sağlayanlar listeye dahil edilir
-        return matchesCountry && matchesSpecialty;
+        return matchesCountry && matchesCity && matchesSpecialty;
       }).toList();
     }
     notifyListeners();
